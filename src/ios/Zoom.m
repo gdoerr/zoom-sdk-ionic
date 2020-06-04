@@ -40,6 +40,8 @@
         // If the SDK has successfully authorized, avoid re-authorization.
         if ([[MobileRTC sharedRTC] isRTCAuthorized])
         {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"SDK already authenticated"];
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
             return;
         }
 
@@ -734,8 +736,16 @@
     if (error != MobileRTCMeetError_Success) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:[self getMeetErrorMessage:error]];
     } else {
-     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self getMeetErrorMessage:error]];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[self getMeetErrorMessage:error]];
     }
+    [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+}
+
+- (void) onMeetingEndedReason:(MobileRTCMeetingEndReason)reason {
+    NSString *msg = [NSString stringWithFormat:@"MeetingEnded: %d", reason];
+
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:msg];
     [pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
