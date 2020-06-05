@@ -38,7 +38,7 @@
                 <param name="ios-package" value="Zoom" />
             </feature>
         </config-file>
-        <edit-config file="*-Info.plist" mode="merge" target="MSMicrophoneUsageDescription">
+        <edit-config file="*-Info.plist" mode="merge" target="NSMicrophoneUsageDescription">
             <string>ShowingTime uses your microphone to enable your participation in Live Video Showings</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
