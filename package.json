@@ -1,9 +1,9 @@
 {
-  "name": "cordova.plugin.stzoom",
+  "name": "cordova.plugin.zoom",
   "version": "0.1.0",
   "description": "A Cordova Plugin for Zoom Video Conferencing",
   "cordova": {
-    "id": "cordova.plugin.stzoom",
+    "id": "cordova.plugin.zoom",
     "platforms": [
       "android"
     ]
