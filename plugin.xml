@@ -38,6 +38,15 @@
                 <param name="ios-package" value="Zoom" />
             </feature>
         </config-file>
+        <edit-config file="*-Info.plist" mode="merge" target="MSMicrophoneUsageDescription">
+            <string>ShowingTime uses your microphone to enable your participation in Live Video Showings</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+            <string>ShowingTime uses your camera to enable your participation in Live Video Showings</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+            <string>ShowingTime uses your photo library to enable your participation in Live Video Showings</string>
+        </edit-config>
         <resource-file src="libs/ios/MobileRTCResources.bundle" />
         <source-file src="libs/ios/MobileRTC.framework" target-dir="lib" framework="true" />
         <framework custom="true" embed="true" src="libs/ios/MobileRTC.framework" />
